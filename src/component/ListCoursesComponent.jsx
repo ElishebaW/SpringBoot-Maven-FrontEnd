@@ -11,6 +11,8 @@ class ListCoursesComponent extends Component {
         }
         this.refreshCourses = this.refreshCourses.bind(this);
         this.deleteCourseClicked = this.deleteCourseClicked.bind(this);
+        this.updateCourseClicked = this.updateCourseClicked.bind(this);
+        this.addCourseClicked = this.addCourseClicked.bind(this);
     }
 
     componentDidMount() {
@@ -38,6 +40,15 @@ class ListCoursesComponent extends Component {
     
     }
 
+    updateCourseClicked(id) {
+        console.log('update ' + id)
+        this.props.history.push(`/courses/${id}`)
+    }
+
+    addCourseClicked() {
+        this.props.history.push(`/courses/-1`)
+    }
+
     render() {
         const { courses} = this.state;
         return (
@@ -49,6 +60,8 @@ class ListCoursesComponent extends Component {
                             <tr>
                                 <th>Id</th>
                                 <th>Description</th>
+                                <th>Update</th>
+                                <th>Add</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,14 +72,16 @@ class ListCoursesComponent extends Component {
                                             <td>{course.id}</td>
                                             <td>{course.description}</td>
                                             <td><button className="btn btn-warning" onClick={() => this.deleteCourseClicked(course.id)}>Delete</button></td>
+                                            <td><button className="btn btn-success" onClick={() => this.updateCourseClicked(course.id)}>Update</button></td>
                                         </tr>
                                         
                                 )
+                                
                             }
                         </tbody>
 
                     </table>
-                    
+                    <button className="btn btn-success" onClick={() => this.addCourseClicked}>Add</button>
                 </div>
             </div>
         )

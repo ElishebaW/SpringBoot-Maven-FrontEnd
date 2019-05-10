@@ -14,6 +14,10 @@ class CourseDataService {
         //console.log('executed service')
         return axios.delete(`${INSTRUCTOR_API_URL}/courses/${id}`);
     }
+
+    retrieveCourse(id) {
+        return axios.get(`${INSTRUCTOR_API_URL}/courses/${id}`);
+    }
 }
 
 export default new CourseDataService()
