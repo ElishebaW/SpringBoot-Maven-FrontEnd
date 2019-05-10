@@ -46,7 +46,7 @@ class ListCoursesComponent extends Component {
     }
 
     addCourseClicked() {
-        this.props.history.push(`/courses/-1`)
+        this.props.history.push(`/courses/-1`) 
     }
 
     render() {
@@ -81,7 +81,7 @@ class ListCoursesComponent extends Component {
                         </tbody>
 
                     </table>
-                    <button className="btn btn-success" onClick={() => this.addCourseClicked}>Add</button>
+                    <button className="btn btn-success" onClick={() => this.addCourseClicked()}>Add</button>
                 </div>
             </div>
         )
