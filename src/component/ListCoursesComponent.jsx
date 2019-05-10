@@ -9,7 +9,8 @@ class ListCoursesComponent extends Component {
             courses: [],
             message: null
         }
-        this.refreshCourses = this.refreshCourses.bind(this)
+        this.refreshCourses = this.refreshCourses.bind(this);
+        this.deleteCourseClicked = this.deleteCourseClicked.bind(this);
     }
 
     componentDidMount() {
@@ -26,11 +27,22 @@ class ListCoursesComponent extends Component {
             )
     }
 
+    deleteCourseClicked(id) {
+        CourseDataService.deleteCourse(id)
+            .then(
+                response => {
+                    this.setState({ message: `Delete of course ${id} Successful` })
+                    this.refreshCourses()
+                }
+            )
+    
+    }
+
     render() {
         const { courses} = this.state;
         return (
             <div className="container">
-                <h3>All Courses</h3>
+                <h3>All Courses</h3>{this.state.message && <div className="alert alert-success">{this.state.message}</div>}
                 <div className="container">
                     <table className="table">
                         <thead>
